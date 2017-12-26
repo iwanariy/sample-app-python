@@ -11,7 +11,7 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
         msg = u""
         # msg += u"HTTP_HOST: {0}\n".format(os.environ.get("HTTP_HOST", ""))
-        msg += u"INSTANCE_ID: {0}"\n.format(os.environ.get("INSTANCE_ID", ""))
+        msg += u"INSTANCE_ID: {0}".format(os.environ.get("INSTANCE_ID", ""))
         self.response.write(msg)
 
 
