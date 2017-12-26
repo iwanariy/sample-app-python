@@ -11,21 +11,24 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
         msg = u""
         # msg += u"Hostname: {0}".format(os.environ.get("HTTP_HOST", ""))
-        msg += u"Hostname: {0}".format(os.environ.get("INSTANCE_ID", ""))
+        msg += u"INSTANCE_ID: {0}".format(os.environ.get("INSTANCE_ID", ""))
         self.response.write(msg)
 
 
 class ErrorPage(webapp2.RequestHandler):
     def get(self):
         tmp = ["hello"]
-        return tmp[1]
+        tmp[1] # Error
 
 
 class SlowPage(webapp2.RequestHandler):
     def get(self):
-        time.sleep(random.random() * 3)
+        t = random.random() * 3
+        time.sleep(t)
+
+        msg = u""
         self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Too Slow...')
+        self.response.write(u"Wait: {} mins...".format(t))
 
 
 app = webapp2.WSGIApplication([
